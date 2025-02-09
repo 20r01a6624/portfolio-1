@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix Clone</title>
+   <STyle>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #141414;
+    color: white;
+}
+
+header {
+    background-color: #e50914;
+    padding: 1rem;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 1rem;
+    text-decoration: none;
+}
+
+#banner {
+    background-image: url('banner-image.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 5rem 1rem;
+    text-align: center;
+}
+
+#banner h2 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+#banner button {
+    background-color: #e50914;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+#movies {
+    padding: 2rem;
+}
+
+.movie-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.movie-list .movie {
+    background-color: #333;
+    margin: 0.5rem;
+    padding: 1rem;
+    width: calc(25% - 1rem);
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.movie-list .movie:hover {
+    transform: scale(1.05);
+}
+
+   </STyle>
+</head>
+<body>
+    <header>
+        <h1>Netflix Clone</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Movies</a>
+            <a href="#">Series</a>
+            <a href="#">My List</a>
+        </nav>
+    </header>
+    <main>
+        <section id="banner">
+            <h2>Featured Movie</h2>
+            <button>Watch Now</button>
+        </section>
+        <section id="movies">
+            <h2>Popular Movies</h2>
+            <div class="movie-list" id="movie-list"></div>
+            
+        </section>
+    </main>
+    <script >document.addEventListener('DOMContentLoaded', () => {
+        const movies = [
+            { title: 'INTESTELLAR', image: '/172038-h.webp' },
+            { title: 'OG', image: '/OIP (1).jpg' },
+            { title: 'KHALEJA', image: '/OIP.jpg' },
+            { title: 'INCEPTION', image: '/R.jpg' },
+        ];
+    
+        const movieListContainer = document.getElementById('movie-list');
+    
+        function renderMovies() {
+            movieListContainer.innerHTML = '';
+            movies.forEach(movie => {
+                const movieDiv = document.createElement('div');
+                movieDiv.classList.add('movie');
+                movieDiv.innerHTML = `
+                    <img src="${movie.image}" alt="${movie.title}" style="width:100%;">
+                    <p>${movie.title}</p>
+                `;
+                movieListContainer.appendChild(movieDiv);
+            });
+        }
+    
+        renderMovies();
+    });
+    </script>
+</body>
+</html>

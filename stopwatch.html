@@ -1,0 +1,92 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Watch</title>
+    <style>
+         * {
+            box-sizing: border-box;
+            align-items: center;
+         }
+        .con {
+            height: 30vh;
+            width: 30vw;
+            border: black solid 5px;
+            position: absolute;
+            left: 35%;
+            top: 10%;
+            
+        }
+        .dis {
+            height: 80%;
+            background-color: rgb(63, 58, 58);
+            color: antiquewhite;
+            font-size: 50px;
+            align-content: center;
+            text-align: center;
+               
+        }
+        .btn {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 20%;
+        background-color: rgb(194, 215, 253);
+        }
+    </style>
+
+ </head>
+ <body>
+    <div class="con">
+    <div class="dis" >00:00</div>
+    <div class="btn">
+        <button onclick="strt()">Start</button>
+        <button onclick="rstrt()">Re-Start</button>
+        <button onclick="stp()">Pause</button>
+
+    </div>
+</div>
+<script>
+    dr=document.getElementsByClassName("dis")[0]
+    m=0
+    s=0
+    c=0
+    str=''
+    f=1
+    if(f) {
+    function disp() {
+     s=s+1
+     if(s>=60) {
+        m=m+1
+        s=0
+     }
+      M=m
+      if(M<=9) M='0'+M
+      S=s
+      if(S<=9) S='0'+s
+      str= M+':'+S
+      dr.innerHTML=str
+      console.log(m,s)
+    } }
+  function strt() {
+    c=c+1
+    if(c=1)  k=setInterval(disp,1000)
+  }
+  function stp(){
+    f=0
+   clearInterval(k)
+  }
+  function rstrt() {
+    c=0
+    m=0
+    s=0
+    str=''
+    clearInterval(k)
+    dr.innerHTML='00:00'
+    strt()
+  }
+  console.log()
+</script>
+ </body>
+ </html>
